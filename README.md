@@ -8,9 +8,9 @@ A 2D Convolutional Neural Network (2D CNN) is a specialized neural network desig
 
 ## Steps involved in the same -
 
-- [CONVOLUTION](#convolution)
-- [MAXPOOLING](#maxpooling)
-- [FLATTENING](#flattening)
+- [CONVOLUTION](#CONVOLUTION)
+- [MAXPOOLING](#MAXPOOLING)
+- [FLATTENING](#FLATTENING)
 
 # Step 1 - CONVOLUTION
 
