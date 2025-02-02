@@ -1,0 +1,50 @@
+module cnn_testbench;
+    // Parameters
+    parameter IMG_SIZE = 6;
+    parameter FILT_SIZE = 3;
+    parameter NUM_FILTERS = 3;
+
+    // Clock and Reset
+    reg clk;
+    reg reset;
+
+    // Outputs
+    wire signed [15:0] pool_result[((IMG_SIZE-FILT_SIZE+1)/2)*((IMG_SIZE-FILT_SIZE+1)/2)*NUM_FILTERS-1:0];
+    wire done;
+
+    // Instantiate CNN Top Module
+    cnn_top #(
+        .IMG_SIZE(IMG_SIZE),
+        .FILT_SIZE(FILT_SIZE),
+        .NUM_FILTERS(NUM_FILTERS)
+    ) uut (
+        .clk(clk),
+        .reset(reset),
+        .pool_result(pool_result),
+        .done(done)
+    );
+
+    // Clock generation
+    always #5 clk = ~clk;
+
+    // Test sequence
+    initial begin
+        $dumpfile("cnn_test.vcd");
+        $dumpvars(0, cnn_testbench);
+
+        clk = 0;
+        reset = 1;
+        #10;
+        reset = 0;
+        
+        // Wait for completion
+        wait(done);
+        
+        $display("Test completed. Pooling results:");
+        for (int i = 0; i < ((IMG_SIZE-FILT_SIZE+1)/2)*((IMG_SIZE-FILT_SIZE+1)/2)*NUM_FILTERS; i = i + 1) begin
+            $display("pool_result[%0d] = %d", i, pool_result[i]);
+        end
+
+        $finish;
+    end
+endmodule
