@@ -19,5 +19,20 @@ Each filter has a specific size (e.g., 3x3 or 5x5) and typically multiple filter
 
 Image and filter taken in our project is - 6x6 and 3x3 data respectively.
 ![image](https://github.com/user-attachments/assets/02d490e0-dfaa-4b6a-84bb-4a555cab9604)
-![image](https://github.com/user-attachments/assets/70f4f5a6-cbc5-4aaa-816e-4a8106cb4287)
+
+# Step 2 - MAXPOOLING
+
+A pooling layer is used to downsample the feature maps and reduce their spatial dimensions (height and width), which helps in reducing the computational complexity and also introduces some translational invariance. The most commonly used pooling operation is max pooling, which takes the maximum value in a small patch (e.g., 2x2) of the feature map.
+
+Eg: ![image](https://github.com/user-attachments/assets/16e30e7a-5d87-4b0e-86f5-acb7963ee420)
+
+# Step 3 - FLATTENING
+
+After several convolutional and pooling layers, the output feature maps are flattened into a one-dimensional vector to prepare for the fully connected (dense) layers that follow. The flatten layer serves the purpose of reshaping the output of the preceding layer into a one-dimensional vector, which can then be fed into subsequent fully connected layers.
+
+Eg: ![image](https://github.com/user-attachments/assets/9f7e4653-c475-431b-bc3e-9f743ec9bfd7)
+
+
+
+
 
